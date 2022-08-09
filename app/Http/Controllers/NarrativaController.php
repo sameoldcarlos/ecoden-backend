@@ -29,14 +29,15 @@ class NarrativaController extends Controller
                 'message' => 'Record not found',
             ], 404);
         }
+        $editors = $this->getStoryEditors($narrativa->id);
         $canUserEditStory = $this->canEdit($narrativa->id);
         return response()->json([
             'id' => $narrativa->id,
             'title' => $narrativa->title,
             'code' => $narrativa->code,
-            'diagram' => $narrativa->diagram,
             'str_id' => $narrativa->str_id,
-            'can_edit' => $canUserEditStory
+            'can_edit' => $canUserEditStory,
+            'editors' => $editors
         ]);
     }
 
@@ -47,7 +48,6 @@ class NarrativaController extends Controller
             [
                 'title' => $request->title,
                 'code' => $request->code,
-                'diagram' => $request->diagram,
                 'screenshot' => $request->screenshot,
                 'str_id' => $request->str_id
             ]
@@ -83,7 +83,6 @@ class NarrativaController extends Controller
             [
                 'title' => $request->title,
                 'code' => $request->code,
-                'diagram' => $request->diagram,
                 'screenshot' => $request->screenshot,
                 'str_id' => $request->str_id
             ]

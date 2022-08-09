@@ -27,7 +27,7 @@ Route::get('/narrativa/{id}/title', 'NarrativaController@getStoryTitle');
 Route::get('/narrativa/{id}/screenshot', 'NarrativaController@getStoryScreenshot');
 Route::group(['middleware' => ['jwt.verify']], function () {
     Route::post('/narrativa/new', 'NarrativaController@store');
-    Route::get('/narrativa/{id}/editors', 'NarrativaController@canEdit');
+    Route::get('/narrativa/{id}/editors', 'NarrativaController@getStoryEditors');
     Route::put('/narrativa/update/{id}', 'NarrativaController@update');
     Route::post('/narrativa/delete/{id}', 'NarrativaController@destroy');
     Route::post('/narrativa/transfer/{id}/{new_author_id}', 'NarrativaController@changeAuthor');

@@ -18,7 +18,6 @@ class CreateNarrativasTable extends Migration
             $table->string('str_id')->unique();
             $table->string('title');
             $table->text('code');
-            $table->string('diagram');
             $table->mediumText('screenshot')->nullable();
             $table->timestamps();
         });
